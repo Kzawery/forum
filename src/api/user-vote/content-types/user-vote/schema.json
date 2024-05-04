@@ -1,0 +1,37 @@
+{
+  "kind": "collectionType",
+  "collectionName": "user_votes",
+  "info": {
+    "singularName": "user-vote",
+    "pluralName": "user-votes",
+    "displayName": "User Vote",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "users_permissions_user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "user_votes"
+    },
+    "comment": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::comment.comment",
+      "inversedBy": "user_votes"
+    },
+    "post": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::post.post",
+      "inversedBy": "user_votes"
+    },
+    "Upvoted": {
+      "type": "boolean"
+    }
+  }
+}

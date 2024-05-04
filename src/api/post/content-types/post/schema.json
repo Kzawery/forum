@@ -1,0 +1,65 @@
+{
+  "kind": "collectionType",
+  "collectionName": "posts",
+  "info": {
+    "singularName": "post",
+    "pluralName": "posts",
+    "displayName": "Post",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Title": {
+      "type": "string"
+    },
+    "Content": {
+      "type": "blocks"
+    },
+    "Upvotes": {
+      "type": "integer"
+    },
+    "Downvotes": {
+      "type": "integer"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "posts"
+    },
+    "comment": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::comment.comment",
+      "mappedBy": "post"
+    },
+    "subreddit": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::subreddit.subreddit"
+    },
+    "Media": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "datetime": {
+      "type": "datetime"
+    },
+    "user_votes": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::user-vote.user-vote",
+      "mappedBy": "post"
+    }
+  }
+}
